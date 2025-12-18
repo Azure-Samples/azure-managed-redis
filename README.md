@@ -41,7 +41,6 @@ If you want to create one of the quickstart apps from scratch, please follow the
 | Quickstart Go           |        | Learn how to incorporate Azure Managed Redis into a Go app.                                                                   |
 | Quickstart Python       |        | Learn how to incorporate Azure Managed Redis into a Go Python scrip                                                           |
 
-
 ### Samples
 
 | Sample | Platform | Description |
