@@ -38,7 +38,7 @@ If you want to create one of the quickstart apps from scratch, please follow the
 | Quickstart C# .NET Core |        | Learn how to incorporate Azure Managed Redis into a C# .NET Core console app using the StackExchange.Redis Redis client.      |
 | Quickstart Java         |        | Learn how to incorporate Azure Managed Redis into a Java app using the Jedis Redis client.                                    |
 | Quickstart Node.js      |        | Learn how to incorporate Azure Managed Redis into a Node.js app.                                                              |
-| Quickstart Go           |        | Learn how to incorporate Azure Managed Redis into a Go app.                                                                   |
+| Quickstart Go           | added  | Learn how to incorporate Azure Managed Redis into a Go app.                                                                   |
 | Quickstart Python       |        | Learn how to incorporate Azure Managed Redis into a Go Python scrip                                                           |
 
 ### Samples
