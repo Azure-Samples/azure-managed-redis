@@ -27,8 +27,9 @@ var tags = {
 @description('(Optional) Principal identifier of the identity that is deploying the template.')
 param deploymentIdentityPrincipalId string = deployer().objectId
 
-// Redis Cache Contributor role definition ID
-var redisCacheContributorRoleId = 'e0f68234-74aa-48ed-b826-c38b57376e17'
+// Redis Enterprise data access roles
+var redisEnterpriseDataOwnerRoleId = '7334ffa7-bda9-4f59-abec-e738babf4049' // Redis Enterprise Cache Data Owner
+var redisEnterpriseDataContributorRoleId = '0526d86d-59b5-4ce5-a5db-2f6b802b0dc6' // Redis Enterprise Cache Data Contributor
 
 // Create resource group
 resource rg 'Microsoft.Resources/resourceGroups@2024-03-01' = {
@@ -55,24 +56,38 @@ module redisEnterprise  'br/public:avm/res/cache/redis-enterprise:0.5.0' = {
     location: location
     skuName: 'Balanced_B0' // Using Balanced_B0 for Basic SKU
     minimumTlsVersion: '1.2'
-    publicNetworkAccess: 'Disabled'
+    publicNetworkAccess: 'Enabled'
     managedIdentities: {
       userAssignedResourceIds: [managedIdentity.outputs.resourceId]
     }
     roleAssignments: [
-      // Role assignment for user account
+      // Data Owner role for deployment user account
       {
         principalId: deploymentIdentityPrincipalId
-        roleDefinitionIdOrName: redisCacheContributorRoleId
+        roleDefinitionIdOrName: redisEnterpriseDataOwnerRoleId
         principalType: 'User'
-        description: 'Grants Redis Cache Contributor role to the user account'
+        description: 'Grants Redis Enterprise Cache Data Owner role to the deployment user account'
       }
-      // Role assignment for managed identity
+      // Data Contributor role for deployment user account
+      {
+        principalId: deploymentIdentityPrincipalId
+        roleDefinitionIdOrName: redisEnterpriseDataContributorRoleId
+        principalType: 'User'
+        description: 'Grants Redis Enterprise Cache Data Contributor role to the deployment user account'
+      }
+      // Data Owner role for managed identity
       {
         principalId: managedIdentity.outputs.principalId
-        roleDefinitionIdOrName: redisCacheContributorRoleId
+        roleDefinitionIdOrName: redisEnterpriseDataOwnerRoleId
         principalType: 'ServicePrincipal'
-        description: 'Grants Redis Cache Contributor role to the managed identity'
+        description: 'Grants Redis Enterprise Cache Data Owner role to the managed identity'
+      }
+      // Data Contributor role for managed identity
+      {
+        principalId: managedIdentity.outputs.principalId
+        roleDefinitionIdOrName: redisEnterpriseDataContributorRoleId
+        principalType: 'ServicePrincipal'
+        description: 'Grants Redis Enterprise Cache Data Contributor role to the managed identity'
       }
     ]
     tags: tags
