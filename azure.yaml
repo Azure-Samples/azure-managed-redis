@@ -1,0 +1,8 @@
+name: azure-managed-redis
+metadata:
+  template: azure-managed-redis@0.0.1-beta
+
+infra:
+  provider: bicep
+  path: infra
+  module: main
