@@ -1,0 +1,50 @@
+# Navigate to your project directory
+cd /c/utils/ConsoleAppdotnetcore
+
+# Create .gitignore file
+cat > .gitignore << 'EOF'
+# Build results
+[Dd]ebug/
+[Dd]ebugPublic/
+[Rr]elease/
+[Rr]eleases/
+x64/
+x86/
+[Aa][Rr][Mm]/
+[Aa][Rr][Mm]64/
+bld/
+[Bb]in/
+[Oo]bj/
+[Ll]og/
+
+# Visual Studio cache/options directory
+.vs/
+
+# User-specific files
+*.rsuser
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# .NET Core
+project.lock.json
+project.fragment.lock.json
+artifacts/
+EOF
+
+# Initialize Git repository
+git init
+
+# Add all files
+git add .
+
+# Make initial commit
+git commit -m "Initial commit: .NET 9 console app with Azure Redis Cache and Microsoft Entra ID authentication"
+
+# Add remote origin (replace with your actual GitHub repo URL)
+git remote add origin https://github.com/YOUR_USERNAME/YOUR_REPO_NAME.git
+
+# Push to GitHub
+git branch -M main
+git push -u origin main

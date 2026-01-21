@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "ConsoleAppdotnetcore": {
+      "commandName": "Project",
+      "environmentVariables": {
+        "REDIS_ENDPOINT": "contosonetcore20.westus3.redis.azure.net:10000"
+      }
+    }
+  }
+}
