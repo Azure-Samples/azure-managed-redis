@@ -1,0 +1,49 @@
+# .gitignore for ASP.NET Core Razor Pages (Visual Studio)
+
+# Build results
+bin/
+obj/
+
+# User-specific files
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Visual Studio
+.vs/
+
+# Rider
+.idea/
+*.sln.iml
+
+# ASP.NET Scaffolding
+ScaffoldingReadMe.txt
+
+# Publish output
+wwwroot/dist/
+wwwroot/node_modules/
+
+# Logs
+*.log
+
+# Others
+*.dbmdl
+*.bak
+*.backup
+*.swp
+*.tmp
+*.temp
+
+# Azure
+*.azure*
+
+# npm packages
+node_modules/
+
+# VS Code
+.vscode/

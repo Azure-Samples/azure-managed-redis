@@ -1,0 +1,37 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>
+
+<!-- Section 1: Connection Section -->
+<div class="mt-4">
+    <h3>Redis Connection Status</h3>
+    <p>@Model.ConnectionStatus</p>
+    @if (!string.IsNullOrEmpty(Model.ErrorMessage))
+    {
+        <div class="alert alert-danger">@Model.ErrorMessage</div>
+    }
+</div>
+
+<!-- Section 2: Ping Section -->
+<div class="mt-4">
+    <h3>Redis Ping Result</h3>
+    <p>@Model.PingResult</p>
+</div>
+
+<!-- Section 3: Set/Get Section -->
+<div class="mt-4">
+    <h3>Redis Key/Value Results</h3>
+    <ul>
+        @foreach (var result in Model.KeyResults)
+        {
+            <li>@result</li>
+        }
+    </ul>
+</div>
