@@ -221,8 +221,8 @@ Redis connection closed
 
 ## Resources
 
-- [Azure Managed Redis Documentation](https://docs.microsoft.com/azure/azure-cache-for-redis/)
-- [Azure Entra ID Authentication for Redis](https://docs.microsoft.com/azure/azure-cache-for-redis/cache-azure-active-directory-for-authentication)
+- [Azure Managed Redis Documentation](https://learn.microsoft.com/azure/redis/)
+- [Azure Entra ID Authentication for Redis](https://learn.microsoft.com/azure/redis/cache-azure-active-directory-for-authentication)
 - [redis-py Documentation](https://redis-py.readthedocs.io/)
 
 ## License
