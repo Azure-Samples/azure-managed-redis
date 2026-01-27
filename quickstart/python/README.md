@@ -16,7 +16,7 @@ This quickstart covers:
 - Azure account with access to Azure Managed Redis
 - Azure CLI installed and authenticated (`az login`)
 - Azure Managed Redis instance with Azure Entra ID authentication enabled
-- Redis Data Contributor role assigned to your user
+- Appropriate data access policy assignments for your user (for example, Redis Data Contributor)
 
 ## Quick Start
 
