@@ -186,13 +186,13 @@ python-quickstart/
 
 ```
 Starting Azure Redis Cache connection test...
-Connecting to: your-cach***:10000
+Connecting to: your-cac***:10000
 
 Ping returned : True
 
 SET Message succeeded: True
 
-GET Message returned : Hello, The cache is working with Python!
+GET Message returned : <your configured message value>
 
 All Redis operations completed successfully!
 
