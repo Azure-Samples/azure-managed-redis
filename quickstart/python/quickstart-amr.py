@@ -6,7 +6,6 @@
 
 import os
 import redis
-from azure.identity import DefaultAzureCredential
 from redis_entraid.cred_provider import create_from_default_azure_credential
 
 # Connection details for your cache
