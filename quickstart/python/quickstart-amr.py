@@ -6,7 +6,6 @@
 
 import os
 import redis
-from azure.identity import DefaultAzureCredential
 from redis_entraid.cred_provider import create_from_default_azure_credential
 
 # Connection details for your cache
@@ -26,7 +25,7 @@ redis_port = int(redis_port)
 # Mask endpoint for logging (show only first few characters)
 masked_endpoint = redis_host[:8] + "***" + ":" + str(redis_port)
 
-print("Starting Azure Redis Cache connection test...")
+print("Starting Azure Managed Redis connection test...")
 print(f"Connecting to: {masked_endpoint}")
 
 print()  # Add a new line

@@ -16,7 +16,7 @@ This quickstart covers:
 - Azure account with access to Azure Managed Redis
 - Azure CLI installed and authenticated (`az login`)
 - Azure Managed Redis instance with Azure Entra ID authentication enabled
-- Redis Data Contributor role assigned to your user
+- Appropriate data access policy assignments for your user (for example, Redis Data Contributor)
 
 ## Quick Start
 
@@ -186,13 +186,13 @@ python-quickstart/
 
 ```
 Starting Azure Redis Cache connection test...
-Connecting to: your-cach***:10000
+Connecting to: your-cac***:10000
 
 Ping returned : True
 
 SET Message succeeded: True
 
-GET Message returned : Hello, The cache is working with Python!
+GET Message returned : <your configured message value>
 
 All Redis operations completed successfully!
 
@@ -221,8 +221,8 @@ Redis connection closed
 
 ## Resources
 
-- [Azure Managed Redis Documentation](https://docs.microsoft.com/azure/azure-cache-for-redis/)
-- [Azure Entra ID Authentication for Redis](https://docs.microsoft.com/azure/azure-cache-for-redis/cache-azure-active-directory-for-authentication)
+- [Azure Managed Redis Documentation](https://learn.microsoft.com/azure/redis/)
+- [Azure Entra ID Authentication for Redis](https://learn.microsoft.com/azure/redis/cache-azure-active-directory-for-authentication)
 - [redis-py Documentation](https://redis-py.readthedocs.io/)
 
 ## License
