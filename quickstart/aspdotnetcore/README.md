@@ -40,8 +40,6 @@ The project uses the following NuGet packages:
 3. Install dependencies:
 
     ```bash
-    dotnet add package StackExchange.Redis
-    dotnet add package Azure.Identity
     dotnet add package Microsoft.Azure.StackExchangeRedis
     ```
 
@@ -75,7 +73,7 @@ Configure your Redis endpoint in the configuration file:
 ```json
 {
   "Redis": {
-    "Endpoint": "contosoak15.westus3.redis.azure.net:10000"
+    "Endpoint": "<yourcachename>.westus3.redis.azure.net:10000"
   }
 }
 ```
