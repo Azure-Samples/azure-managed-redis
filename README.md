@@ -36,15 +36,15 @@ If you want to create one of the quickstart apps from scratch, please follow the
 |-------------------------|--------|-------------------------------------------------------------------------------------------------------------------------------|
 | Quickstart ASP.NET Core |        | Learn how to use an ASP.NET Core web application to connect to Azure Managed Redis to store and retrieve data from the cache. |
 | Quickstart C# .NET Core |        | Learn how to incorporate Azure Managed Redis into a C# .NET Core console app using the StackExchange.Redis Redis client.      |
-| Quickstart Java         |        | Learn how to incorporate Azure Managed Redis into a Java app using the Jedis Redis client.                                    |
 | Quickstart Node.js      | added  | Learn how to incorporate Azure Managed Redis into a Node.js app.                                                              |
 | Quickstart Go           | added  | Learn how to incorporate Azure Managed Redis into a Go app.                                                                   |
-| Quickstart Python       |        | Learn how to incorporate Azure Managed Redis into a Go Python scrip                                                           |
+| Quickstart Python       | added  | Learn how to incorporate Azure Managed Redis into a Go Python scrip                                                           |
 
-### Samples
+## Samples
 
-| Sample | Platform | Description |
-| ------ | -------- | ----------- |
+Check out these other samples in this repo for code beyond QuickStarts.
+
+- [Azure Managed Redis](https://github.com/azuremanagedredis)
 
 ## Resources
 
