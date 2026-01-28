@@ -3,8 +3,5 @@
 # Core Redis client for Python
 redis>=7.0.0
 
-# Azure authentication library
-azure-identity>=1.24.0
-
 # Redis Azure Entra ID integration
 redis-entraid>=1.1.0

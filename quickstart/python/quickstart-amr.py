@@ -22,9 +22,14 @@ if not redis_endpoint or ":" not in redis_endpoint:
 redis_host, redis_port = redis_endpoint.split(":")
 redis_port = int(redis_port)
 
+
+# Parse host and port from endpoint
+redis_host, redis_port = redis_endpoint.split(":")
+redis_port = int(redis_port)
+
 # Mask endpoint for logging (show only first few characters)
 masked_endpoint = redis_host[:8] + "***" + ":" + str(redis_port)
-
+    
 print("Starting Azure Managed Redis connection test...")
 print(f"Connecting to: {masked_endpoint}")
 
@@ -33,8 +38,9 @@ print()  # Add a new line
 try:
     # Create credential provider using DefaultAzureCredential for Azure Entra ID authentication
     credential_provider = create_from_default_azure_credential(
-         ("https://redis.azure.com/.default",),)
-
+        scopes=("https://redis.azure.com/.default",), 
+        app_kwargs={"exclude_shared_token_cache_credential": True}
+    )
     # Create a Redis client with Azure Entra ID authentication
     r = redis.Redis(host=redis_host, 
                     port=redis_port, 

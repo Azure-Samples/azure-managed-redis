@@ -20,43 +20,19 @@ This quickstart covers:
 
 ## Quick Start
 
-### 1. Clone or Download Project
+### Download Project and install dependencies
 
-```bash
-git clone <repository-url>
-cd python-quickstart
+Download this repo.
 
-# Or create a new directory and copy the files
-mkdir azure-redis-quickstart
-cd azure-redis-quickstart
-# Copy quickstart-amr.py and requirements.txt to this directory
-```
-
-### 2. Install Dependencies
+### Install Dependencies
 
 ```bash
 pip install -r requirements.txt
 ```
 
-Or install packages individually:
-
-```bash
-pip install redis azure-identity redis-entraid
-```
-
-### 3. Configure Connection
+### Configure Connection
 
 Set the `REDIS_ENDPOINT` environment variable with your Azure Managed Redis endpoint:
-
-**PowerShell:**
-```powershell
-$env:REDIS_ENDPOINT = "your-cache-name.eastus.redis.azure.net:10000"
-```
-
-**Bash:**
-```bash
-export REDIS_ENDPOINT="your-cache-name.eastus.redis.azure.net:10000"
-```
 
 **Note:** Azure Managed Redis uses port 10000, which differs from Azure Cache for Redis (port 6380). The endpoint is masked in logs for security.
 
@@ -64,6 +40,16 @@ export REDIS_ENDPOINT="your-cache-name.eastus.redis.azure.net:10000"
 
 ```bash
 python quickstart-amr.py
+
+```
+
+## Project Structure
+
+```
+python-quickstart/
+├── quickstart-amr.py    # Main connection script
+├── requirements.txt     # Python dependencies
+└── README.md            # Documentation
 ```
 
 ## Implementation Details
@@ -71,25 +57,6 @@ python quickstart-amr.py
 ### Establishing Connection
 
 The script establishes a secure connection using Azure Entra ID authentication via `DefaultAzureCredential`:
-
-```python
-from azure.identity import DefaultAzureCredential
-from redis_entraid.cred_provider import create_from_default_azure_credential
-
-# Create credential provider using DefaultAzureCredential for Azure Entra ID authentication
-credential_provider = create_from_default_azure_credential(
-     ("https://redis.azure.com/.default",),)
-
-# Create a Redis client with Azure Entra ID authentication
-r = redis.Redis(host=redis_host, 
-                port=redis_port, 
-                ssl=True, 
-                decode_responses=True, 
-                credential_provider=credential_provider,
-                socket_timeout=10,
-                socket_connect_timeout=10
-                )
-```
 
 Configuration parameters:
 
@@ -99,37 +66,15 @@ Configuration parameters:
 
 ### Connection Verification
 
-The script tests connectivity by sending a PING command:
-
-```python
-# Test connection 
-result = r.ping()
-print("Ping returned : " + str(result))
-```
-
-Returns `True` if the connection and authentication are successful.
+The script tests connectivity to the cache by sending a PING command.
 
 ### SET and GET Operations
 
-Basic Redis operations for storing and retrieving data:
-
-```python
-# SET operation - Store a message
-result = r.set("Message", "Hello, The cache is working with Python!")
-print("SET Message succeeded: " + str(result))
-
-# GET operation - Retrieve the message
-value = r.get("Message")
-
-if value is not None:
-    print("GET Message returned : " + str(value))
-else:
-    print("GET Message returned None")
-```
+Employs the basic Redis operations for storing and retrieving data: set and get.
 
 ## Error Handling
 
-The script includes exception handling for common failure scenarios:
+The script includes exception handling for common failure scenarios.
 
 ```python
 except redis.ConnectionError as e:
@@ -152,16 +97,7 @@ except Exception as e:
 | `ConnectionError` | Network connectivity issues | Verify hostname, port, and firewall settings |
 | `AuthenticationError` | Authentication failures | Check Azure login status and user permissions |
 | `TimeoutError` | Request timeouts | Review network latency and Redis server performance |
-| Error 999 | Network/firewall restrictions | Verify IP whitelisting and Redis accessibility |
-
-## Project Structure
-
-```
-python-quickstart/
-├── quickstart-amr.py    # Main connection script
-├── requirements.txt     # Python dependencies
-└── README.md            # Documentation
-```
+| Unexpected Error `999` | Network/firewall restrictions | Verify IP whitelisting and Redis accessibility |
 
 ## Configuration Reference
 
@@ -176,15 +112,9 @@ python-quickstart/
 | `socket_timeout` | `10` | Socket operation timeout in seconds |
 | `socket_connect_timeout` | `10` | Connection timeout in seconds |
 
-### Authentication Scope
-
-```python
-"https://redis.azure.com/.default"
-```
-
 ## Expected Output
 
-```
+```bash
 Starting Azure Redis Cache connection test...
 Connecting to: your-cac***:10000
 
@@ -204,11 +134,13 @@ Redis connection closed
 ## Troubleshooting
 
 ### Authentication Errors
+
 - Verify Azure CLI login: `az login`
 - Confirm Redis Data Contributor role assignment
 - Ensure Azure Entra ID is enabled on the Azure Managed Redis instance
 
 ### Connection Errors
+
 - Ensure `REDIS_ENDPOINT` environment variable is set in `host:port` format
 - Verify hostname format: `<cache-name>.<region>.redis.azure.net`
 - Confirm port 10000 (not 6380)
@@ -216,7 +148,8 @@ Redis connection closed
 - Verify the Azure Managed Redis instance is running
 
 ### Import Errors
-- Install dependencies: `pip install redis>=7.0.0 azure-identity>=1.24.0 redis-entraid>=1.1.0`
+
+- Install dependencies: `pip install redis>=7.0.0 redis-entraid>=1.1.0`
 - Verify virtual environment activation
 
 ## Resources
@@ -228,4 +161,3 @@ Redis connection closed
 ## License
 
 MIT License
-
