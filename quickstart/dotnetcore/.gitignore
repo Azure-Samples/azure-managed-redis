@@ -26,6 +26,8 @@ bld/
 *.user
 *.userosscache
 *.sln.docstates
+*.vscode
+*.gitignore
 
 # .NET Core
 project.lock.json
